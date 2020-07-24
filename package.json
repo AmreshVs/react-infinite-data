@@ -1,6 +1,6 @@
 {
   "name": "react-infinite-data",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "Infinite Scroll Component for React",
   "main": "./build/index.js",
   "scripts": {
@@ -11,10 +11,16 @@
     "infinite",
     "scroll",
     "data",
-    "amresh"
+    "infinite scroll",
+    "infinite data"
   ],
   "author": "Amresh Vs",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AmreshVs/react-infinite-data.git"
+  },
+  "bugs" : "https://github.com/AmreshVs/react-infinite-data/issues",
   "devDependencies": {
     "@babel/core": "^7.7.5",
     "@babel/preset-env": "^7.7.6",

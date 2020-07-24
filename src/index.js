@@ -1,4 +1,4 @@
-import React, { useEffect, createRef } from 'react';
+import React, { useEffect, createRef, useState } from 'react';
 
 const styles = {
   w100: {
@@ -12,7 +12,7 @@ const styles = {
 export default function InfiniteDataScroll({ loadMore, loadData, children, loader, endMessage, loadingContainerClass, bottomOffset = 100 }) {
 
   let loadingRef = createRef(null);
-  let status = false;
+  let [status, setStatus] = useState(false);
 
   useEffect(() => {
     addScrollListener();
@@ -33,17 +33,17 @@ export default function InfiniteDataScroll({ loadMore, loadData, children, loade
           let offset = elementTop - windowInnerHeight - bottomOffset;
           let scrollY = this.scrollY;
           if (scrollY >= offset) {
-            status = true;
-            timeout();
+            setStatus(true);
             loadData();
+            timeout();
           }
         }
       });
 
       const timeout = () => {
         setTimeout(() => {
-          status = false;
-        }, 1000);
+          setStatus(false);
+        }, 0);
       }
     }
   }
@@ -67,9 +67,10 @@ export default function InfiniteDataScroll({ loadMore, loadData, children, loade
           }
         </div>
       }
-      {loadMore === false && endMessage !== undefined ?
+      {endMessage !== undefined && loadMore === false ?
         endMessage
         :
+        loadMore === false &&
         <div style={{ ...styles.w100, ...styles.center }}>
           <span>No more data to show!</span>
         </div>
